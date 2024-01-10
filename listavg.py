@@ -1,3 +1,5 @@
+import timeit
+
 class ListAverage:
     def __init__(self, lst):
         self.lst = lst.copy()
@@ -18,3 +20,10 @@ class ListAverage:
     def compute_avg_faster(self):
         # implement this method
         return self.total / len(self.lst)
+
+test = ListAverage([43,5,4,23,54])
+
+faster = timeit.timeit(stmt=f'{test.compute_avg_faster()}')
+slow = timeit.timeit(stmt=f'{test.compute_avg()}')
+
+print(f'{faster - slow}')
